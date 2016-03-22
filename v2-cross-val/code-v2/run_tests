@@ -1,0 +1,37 @@
+#!/bin/bash
+
+###
+#
+# Script for executing two-class author differentiation tests.
+#
+###
+
+
+## Tune model with:
+python model.py martin martin -wts1 a1novel -wts2 a2novel --bs --2 --rs > ../log2/martin_martin_a1_a2_2.log
+python model.py martin martin -wts1 a1novel -wts2 cnovel --bs --2 --rs > ../log2/martin_martin_a1_c_2.log
+python model.py antonopoulos antonopoulos -wts1 abook -wts2 bbook --bs --2 --rs > ../log2/antonopoulos_antonopoulos_2.log
+
+
+## Validate model with:
+python model.py martin martin -wts1 a1novel -wts2 cnovel --bs --2 --rs > ../log2/martin_martin_a1_c_2.log
+python model.py martin antonopoulos -wts1 a1novel -wts2 abook --bs --2 --rs > ../log2/martin_antonopoulos_2.log
+
+
+## Predict (in order to do more tests):
+python model.py satoshi satoshi -wts1 paper email -wts2 forum --bs --2 --rs > ../log2/satoshi_satoshi_bs.log
+
+
+## More Validation:
+python model.py satoshi martin -wts1 paper email -wts2 a1novel --bs --2 --rs > ../log2/satoshi_martin_2.log
+python model.py satoshi antonopoulos -wts1 paper email -wts2 abook --bs --2 --rs > ../log2/satoshi_antonopoulos_2.log
+python model.py satoshi cervera -wts1 paper email --bs --2 --rs > ../log2/satoshi_cervera_2.log
+
+
+## Predict:
+python model.py satoshi suspectA -wts1 paper email -wts2 bpaper --bs --2 --rs > ../log2/satoshi_suspectA_2.log
+python model.py satoshi suspectB -wts1 paper email --bs --2 --rs > ../log2/satoshi_suspectB_2.log
+python model.py satoshi suspectC -wts1 paper email --bs --2 --rs > ../log2/satoshi_suspectC_2.log
+
+## Backup DB
+sh dump_cmds

@@ -1,0 +1,5 @@
+python extract_pdf.py ../../raw-data/antonopoulos/antonopoulos-11.pdf antonopoulos '1980-01-01 00:00:11 UTC' -wt abook
+python extract_pdf.py ../../raw-data/antonopoulos/antonopoulos-12.pdf antonopoulos '1980-01-01 00:00:12 UTC' -wt abook
+python extract_pdf.py ../../raw-data/antonopoulos/antonopoulos-13.pdf antonopoulos '1980-01-01 00:00:13 UTC' -wt abook
+python extract_pdf.py ../../raw-data/antonopoulos/antonopoulos-14.pdf antonopoulos '1980-01-01 00:00:14 UTC' -wt abook
+python extract_pdf.py ../../raw-data/antonopoulos/antonopoulos-15.pdf antonopoulos '1980-01-01 00:00:15 UTC' -wt abook

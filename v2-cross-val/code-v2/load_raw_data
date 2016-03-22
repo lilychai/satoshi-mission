@@ -1,0 +1,47 @@
+#!/bin/bash
+
+###
+#
+# Script for generating commands for loading pdf docs into MongoDB.
+#
+###
+
+
+## Satoshi
+python web_scraping.py    #`web-scrape`, `raw-docs`
+python extract_pdf.py ../../raw-data/bitcoin-20081003134958-0700.pdf satoshi '2008-10-03 20:49:58 UTC' -wt paper
+
+
+## Martin (fictious dates)
+python extract_pdf.py ../../raw-data/martin/martin-1.pdf martin '2000-01-01 00:00:00 UTC' -wt a1novel
+python extract_pdf.py ../../raw-data/martin/martin-2.pdf martin '2000-01-01 00:00:00 UTC' -wt a2novel
+python extract_pdf.py ../../raw-data/martin/martin-4.pdf martin '1998-01-01 00:00:00 UTC' -wt cnovel
+
+
+## Bitcoin Book (fictious dates)
+sh gen_extract_cmds 'antonopoulos' 11 15 'abook' > antonopoulos_abook_extract_cmds
+sh gen_extract_cmds 'antonopoulos' 16 20 'bbook' > antonopoulos_bbook_extract_cmds
+source antonopoulos_abook_extract_cmds
+source antonopoulos_bbook_extract_cmds
+
+
+## Suspect A (fictious dates)
+sh gen_extract_cmds 'suspectA' 6 9 'apaper' > suspectA_apaper_extract_cmds
+sh gen_extract_cmds 'suspectA' 10 12 'bpaper' > suspectA_bpaper_extract_cmds
+source suspectA_apaper_extract_cmds
+source suspectA_bpaper_extract_cmds
+
+
+## Suspect B (fictious dates)
+sh gen_extract_cmds 'suspectB' 1 12 'essay' > suspectB_extract_cmds
+source suspectB_extract_cmds
+
+
+## Suspect C (fictious dates)
+sh gen_extract_cmds 'suspectC' 1 5 'paper' > suspectC_extract_cmds
+source suspectC_extract_cmds
+
+
+## Cervera
+sh gen_extract_cmds 'cervera' 1 6 'essay' > cervera_extract_cmds
+source cervera_extract_cmds

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+###
+#
+# Script for dumping MongoDB and Postgres databases as backup.
+#
+###
+
+
+mongodump -d satoshi2 -o ../db-dumps/mongodump
+pg_dump -d satoshi2 > ../db-dumps/psqldump

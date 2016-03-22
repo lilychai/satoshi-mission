@@ -1,0 +1,6 @@
+python extract_pdf.py ../../raw-data/cervera/cervera-1.pdf cervera '1980-01-01 00:00:01 UTC' -wt essay
+python extract_pdf.py ../../raw-data/cervera/cervera-2.pdf cervera '1980-01-01 00:00:02 UTC' -wt essay
+python extract_pdf.py ../../raw-data/cervera/cervera-3.pdf cervera '1980-01-01 00:00:03 UTC' -wt essay
+python extract_pdf.py ../../raw-data/cervera/cervera-4.pdf cervera '1980-01-01 00:00:04 UTC' -wt essay
+python extract_pdf.py ../../raw-data/cervera/cervera-5.pdf cervera '1980-01-01 00:00:05 UTC' -wt essay
+python extract_pdf.py ../../raw-data/cervera/cervera-6.pdf cervera '1980-01-01 00:00:06 UTC' -wt essay

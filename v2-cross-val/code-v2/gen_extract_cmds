@@ -1,0 +1,27 @@
+#!/bin/bash
+
+###
+#
+# Script to generate shell commands to load pdf docs into MongoDB.
+#
+###
+
+
+part_0="python extract_pdf.py ../../raw-data/"
+part_1=".pdf "
+part_2=" '1980-01-01 00:00:"
+part_3=" UTC' -wt "
+
+sus=$1
+from=$2
+to=$3
+wt=$4
+
+for i in `seq $from $to`;
+    do
+        if (( i > 9 )); then
+        echo $part_0$sus"/"$sus"-"$i$part_1$sus$part_2$i$part_3$wt
+        else
+        echo $part_0$sus"/"$sus"-"$i$part_1$sus$part_2"0"$i$part_3$wt
+        fi
+    done

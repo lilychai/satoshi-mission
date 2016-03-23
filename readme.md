@@ -7,7 +7,7 @@ In late 2008/early 2009, a person or a group of people by the pseudonym “Satos
 <hr style='background-color: #fff; border-top: 2px dashed #CCCCCC;'>
 <h2><font face="DIN Condensed" color=#567089> DETAILS</font></h2>
 
-*(Coming after the presentation. No spoilers!)*
+*(Coming after the presentation. No spoilers.)*
 
 <hr style='background-color: #fff; border-top: 2px dashed #CCCCCC;'>
 <h2><font face="DIN Condensed" color=#567089> SPECIAL THANKS</font></h2>
@@ -27,7 +27,7 @@ In late 2008/early 2009, a person or a group of people by the pseudonym “Satos
 * [*How a Bitcoin Transaction Works*](http://visual.ly/bitcoin-infographic) – infographics
 
 
-##### Data Sources
+##### Data Source
 
 * [Bitcoin white paper](https://bitcoin.org/bitcoin.pdf)
 * [Earlier version of the bitcoin white paper](http://www.gwern.net/docs/20081003-nakamoto-bitcoindraft.pdf)
@@ -35,6 +35,8 @@ In late 2008/early 2009, a person or a group of people by the pseudonym “Satos
 * [Satoshi's Cryptography Mailing List e-mails and forum posts (compiled)](http://satoshi.nakamotoinstitute.org) – verified against:
     * [Satoshi's forum posts on P2P foundation (original)](http://p2pfoundation.ning.com/forum/topics/bitcoin-open-source?id=2003008%3ATopic%3A9402&page=1#comments)
     * [Satoshi's forum posts on Bitcointalk (original)](https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts)
+* [George RR Martin's novels](https://openlibrary.org/search?q=george+rr+martin)
+* [Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook) by A. Antonopoulos
 
 
 ##### Model and Analysis

@@ -1,5 +1,6 @@
 ![alt text](images/title.png "The Satoshi Mission")
 
+<br>
 ## Project Description
 
 In late 2008/early 2009, a person or a group of people by the pseudonym “Satoshi Nakamoto” published a white paper along with a software program for a new cryptocurrency that he/she/they called the “bitcoin”. Seven years have since passed and the bitcoin has evolved into the strongest currency in the world, yet the true identity of its creator remains an unsolved mystery. The goal of this mission is to search for the face(s) behind the bitcoin using the writings he/she/they left behind in forums and e-mails.

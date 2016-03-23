@@ -1,23 +1,20 @@
 ![alt text](images/title.png "The Satoshi Mission")
 
-<h2><font face="DIN Condensed" color=#567089> PROJECT DESCRIPTION</font></h2>
+## Project Description
 
 In late 2008/early 2009, a person or a group of people by the pseudonym “Satoshi Nakamoto” published a white paper along with a software program for a new cryptocurrency that he/she/they called the “bitcoin”. Seven years have since passed and the bitcoin has evolved into the strongest currency in the world, yet the true identity of its creator remains an unsolved mystery. The goal of this mission is to search for the face(s) behind the bitcoin using the writings he/she/they left behind in forums and e-mails.
 
-<hr style='background-color: #fff; border-top: 2px dashed #CCCCCC;'>
-<h2><font face="DIN Condensed" color=#567089> DETAILS</font></h2>
+## Details
 
 *(Coming after the presentation. No spoilers.)*
 
-<hr style='background-color: #fff; border-top: 2px dashed #CCCCCC;'>
-<h2><font face="DIN Condensed" color=#567089> SPECIAL THANKS</font></h2>
+## Special Thanks
 
 * Bitcoin consultant – [Francisco Cervera](https://www.linkedin.com/in/cerverafco)
 * Data consultant – [Jay Jung](https://www.linkedin.com/in/jayjung0)
 * Art consultant – [Engel Ching](https://www.linkedin.com/in/engelching), [Mia Hunsicker](https://www.linkedin.com/in/miahunsicker)
 
-<hr style='background-color: #fff; border-top: 2px dashed #CCCCCC;'>
-<h2><font face="DIN Condensed" color=#567089> REFERENCES</font></h2>
+## References
 
 ##### Background on Bitcoin and Satoshi Nakamoto
 

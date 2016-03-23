@@ -4,16 +4,19 @@
 
 In late 2008/early 2009, a person or a group of people by the pseudonym “Satoshi Nakamoto” published a white paper along with a software program for a new cryptocurrency that he/she/they called the “bitcoin”. Seven years have since passed and the bitcoin has evolved into the strongest currency in the world, yet the true identity of its creator remains an unsolved mystery. The goal of this mission is to search for the face(s) behind the bitcoin using the writings he/she/they left behind in forums and e-mails.
 
+<br>
 ## Details
 
 *(Coming after the presentation. No spoilers.)*
 
+<br>
 ## Special Thanks
 
 * Bitcoin consultant – [Francisco Cervera](https://www.linkedin.com/in/cerverafco)
 * Data consultant – [Jay Jung](https://www.linkedin.com/in/jayjung0)
 * Art consultant – [Engel Ching](https://www.linkedin.com/in/engelching), [Mia Hunsicker](https://www.linkedin.com/in/miahunsicker)
 
+<br>
 ## References
 
 ##### Background on Bitcoin and Satoshi Nakamoto

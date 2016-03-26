@@ -12,6 +12,7 @@ In late 2008, a person or a group of people by the pseudonym "Satoshi Nakamoto" 
 
 Satoshi hid his online traces very well, so all that was left behind were one white paper, eighteen mailing list e-mails and 539 forum posts. So for my initial investigation, I used a two-class SVM model to compare Satoshi's writings against some of the suspects'. SVM is the baseline model for text classifiaction type of problems. I did try other classifiers and indeed SVM performed the best.
 
+<br>
 This is my data pipeline:
 
 ![alt img](../images/002.png)

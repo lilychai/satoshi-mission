@@ -8,6 +8,7 @@
 from __future__ import division   # no need to worry about integer division
 
 from dbio import DBIO
+import json
 import warnings
 import time
 

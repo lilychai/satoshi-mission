@@ -8,6 +8,7 @@
 from __future__ import division        # no need to worry about integer division
 
 from dbio import DBIO
+import json
 import textract
 
 import string, re
@@ -39,8 +40,8 @@ def extract_pdf(filename, author, date,
 
     # save raw text to MongoDB
     with open('../../.dbname', 'r') as f:
-        DB_NAME      = json.load(f)['dbname']
-        
+        DB_NAME = json.load(f)['dbname']
+
     MG_COLL_NAME = 'raw-docs'
 
     io = DBIO(MG_DB_NAME=DB_NAME)

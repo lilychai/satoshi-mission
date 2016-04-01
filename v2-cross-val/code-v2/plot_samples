@@ -1,0 +1,7 @@
+# Tuning sets
+python model.py martin martin -wts1 a1novel -wts2 a2novel --bs --2 --nors --ps
+python model.py martin antonopoulos -wts1 a1novel -wts2 abook --bs --2 --nors --ps
+
+# Validation sets
+python model.py martin martin -wts1 a1novel -wts2 cnovel --bs --2 --nors --ps
+python model.py satoshi cervera -wts1 paper email --bs --2 --nors --ps

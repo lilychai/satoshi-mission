@@ -300,6 +300,9 @@ def crunch_statistics(data, tagger=None):
     # remove empty words (''),
     # remove single characters not 'a' or 'I' -- from equations or annotations,
     # remove author names (limited to satoshi and suspects)
+    with open('.exclude_terms', 'r') as f:
+        exclude_terms = set(s.strip() for s in f.readlines())
+
     words = np.array([word for word in \
                       re.split(r'[^\x00-\x7F]|[' + string.whitespace + \
                                                    string.punctuation + \
@@ -307,11 +310,7 @@ def crunch_statistics(data, tagger=None):
                                doc.lower()) \
                       if word \
                      and (len(word) > 1 or word in {'a', 'i', 'A', 'I'}) \
-                     and word not in {'satoshi', 'nakamoto',
-                                      'suspectA-firstname', 'suspectA-lastname',
-                                      'suspectB-firstname', 'suspectB-lastname',
-                                      'suspectC-firstname', 'suspectC-lastname',
-                                      'francisco', 'cervera'}])
+                     and word not in exclude_terms])
 
 
     # no. of words incl. stop words

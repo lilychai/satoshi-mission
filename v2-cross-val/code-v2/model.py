@@ -34,8 +34,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import f1_score, recall_score, accuracy_score
 from sklearn.metrics import confusion_matrix, average_precision_score
 
+from sklearn.manifold import TSNE, MDS
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 import argparse
 
+sns.set(font='DIN Condensed')
 
 class MySVCModel(object):
 
@@ -48,9 +53,8 @@ class MySVCModel(object):
         self.__ctrl__ = None
         self.__case__ = None
 
-        with open('../.dbname', 'r') as f:
+        with open('../../.dbname', 'r') as f:
             self.__DB_NAME__ = json.load(f)['dbname']
-
         self.__MG_DOCS_COLL__   = 'raw-docs'           # raw docs
         self.__MG_SENTS_COLL__  = 'bag-of-sents'       # raw sentences
         self.__MG_TOKENS_COLL__ = 'sample-tokens'      # clean tokens (words)
@@ -210,12 +214,14 @@ class MySVCModel(object):
 
 
     def cross_validate(self, chunk_size=500, k=3,
-                             verbose=False, recreate_samples=False):
+                             verbose=False,
+                             recreate_samples=False, plot_samples=False):
         """
         :type chunk_size: int
         :type k: int
         :type verbose: bool
         :type recreate_samples: bool
+        :type plot_samples: bool
         :rtype: bool
         :
         : Perform k-fold cross validation.
@@ -224,9 +230,9 @@ class MySVCModel(object):
 
         # create results table if not exist
         pg_header_dic = {'author1': 'varchar(20)',
-                         'wts1'    : 'text[]',
+                         'wts1'   : 'text[]',
                          'author2': 'varchar(20)',
-                         'wts2'    : 'text[]',
+                         'wts2'   : 'text[]',
                          'bs'     : 'boolean',
                          'fold'   : 'int'    }
 
@@ -299,6 +305,11 @@ class MySVCModel(object):
             # create feature matrix
             print 'Preparing feature matrix.'
             dfs = self.__prepare_df__(fold, verbose=verbose)
+
+            if plot_samples:
+                print 'Hello Samples :)'
+                self.__plot_samples__(dfs, fold)
+
             X_train = dfs[0].drop('label', axis=1)
             y_train = dfs[0]['label']
             X_test  = dfs[1].drop('label', axis=1)
@@ -658,6 +669,73 @@ class MySVCModel(object):
 
 
 
+    def __plot_samples__(self, dfs, fold):
+        """
+        :type dfs: List[pandas DataFrame]      # [training df, testing df]
+        :type fold: int
+        :rtype: None
+        """
+
+        mds  = MDS(n_components=2, max_iter=3000, eps=1e-9, dissimilarity='euclidean', n_jobs=-1)
+        tsne = TSNE(n_components=2)
+
+        # change label to color index
+        #   author 1 train (0 = light blue), author 1 test (1 = dark blue)
+        #   author 2 train (2 = light green), author 2 test (3 = dark green)
+        df_all = pd.DataFrame(columns = dfs[0].columns)
+        df0_copy = dfs[0].copy()
+        df0_copy.loc[(df0_copy.label ==  1).values, 'label'] = 0
+        df0_copy.loc[(df0_copy.label == -1).values, 'label'] = 2
+        df_all = df_all.append(df0_copy)
+
+        df1_copy = dfs[1].copy()
+        df1_copy.loc[(df1_copy.label ==  1).values, 'label'] = 1
+        df1_copy.loc[(df1_copy.label == -1).values, 'label'] = 3
+        df_all = df_all.append(df1_copy)
+
+        legend = {0: 'Author 1 Training Sample',
+                  1: 'Author 1 Test Sample',
+                  2: 'Author 2 Training Sample' ,
+                  3: 'Author 2 Test Sample' }
+
+        # fit on training data
+        pos_lst = [('Multi-Dimensional Scaling (MDS)',
+                    mds.fit(df_all.drop('label', axis=1)).embedding_),
+
+                   ('t-Distributed Stochastic Neighbor Embedding (TSNE)',
+                    tsne.fit(df_all.drop('label', axis=1)).embedding_)]
+
+
+        # plot
+        colors = sns.color_palette('Paired', 4)
+        fig = plt.figure(figsize=(16,7))
+
+        plt.hold(True)
+        for k, (title, pos) in enumerate(pos_lst, 1):
+
+            ## fig.add_subplot() works in ipython notebook but creates a
+            ## mysterious 3rd axes in python...
+            # ax = fig.add_subplot(1,2,k)
+
+            ax = plt.subplot(1,2,k)
+            ax.set_title(title)
+
+            for i in xrange(len(colors)):
+                samples = pos[(df_all.label == i).values, :]
+                ax.scatter(samples[:,0], samples[:,1],
+                           c=colors[i], edgecolor='none',
+                           label=legend[i])
+            ax.legend()
+
+        plt.hold(False)
+
+        plt.savefig('../figs/' + \
+                   self.__PG_STATS_TBL__[self.__PG_STATS_TBL__.find("_")+1:] + \
+                   'fold' + str(fold) + '.png',
+                   dpi=300, transparent=True)
+
+        plt.close(fig)
+
 
 if __name__ == "__main__":
 
@@ -708,6 +786,16 @@ if __name__ == "__main__":
     parser.set_defaults(recreate_samples=False)
 
 
+    feature_parser = parser.add_mutually_exclusive_group(required=False)
+    feature_parser.add_argument('--ps', dest='plot_samples',
+                                action='store_true',
+                                help='Plot samples.')
+    feature_parser.add_argument('--nops', dest='plot_samples',
+                                action='store_false',
+                                help=\
+                                'Do not plot samples (default).')
+    parser.set_defaults(plot_samples=False)
+
 
     args = parser.parse_args()
 
@@ -720,4 +808,5 @@ if __name__ == "__main__":
                  bootstrap=args.bootstrap, verbose=True):
 
         model.cross_validate(verbose=True,
-                             recreate_samples=args.recreate_samples)
+                             recreate_samples=args.recreate_samples,
+                             plot_samples=args.plot_samples)

@@ -38,7 +38,9 @@ def extract_pdf(filename, author, date,
 
 
     # save raw text to MongoDB
-    DB_NAME      = 'satoshi2'
+    with open('../../.dbname', 'r') as f:
+        DB_NAME      = json.load(f)['dbname']
+        
     MG_COLL_NAME = 'raw-docs'
 
     io = DBIO(MG_DB_NAME=DB_NAME)

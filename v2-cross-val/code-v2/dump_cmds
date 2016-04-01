@@ -6,6 +6,6 @@
 #
 ###
 
-
-mongodump -d satoshi2 -o ../db-dumps/mongodump
-pg_dump -d satoshi2 > ../db-dumps/psqldump
+DBNAME=$(cat ../../.dbname | python -c 'import sys, json; print json.load(sys.stdin)["dbname"]')
+mongodump -d $DBNAME -o ../db-dumps/mongodump
+pg_dump -d $DBNAME > ../db-dumps/psqldump

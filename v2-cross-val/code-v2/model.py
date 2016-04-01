@@ -47,7 +47,9 @@ class MySVCModel(object):
         self.__ctrl__ = None
         self.__case__ = None
 
-        self.__DB_NAME__        = 'satoshi2'
+        with open('../.dbname', 'r') as f:
+            self.__DB_NAME__ = json.load(f)['dbname']
+
         self.__MG_DOCS_COLL__   = 'raw-docs'           # raw docs
         self.__MG_SENTS_COLL__  = 'bag-of-sents'       # raw sentences
         self.__MG_TOKENS_COLL__ = 'sample-tokens'      # clean tokens (words)

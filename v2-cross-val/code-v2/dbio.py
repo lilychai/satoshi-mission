@@ -13,7 +13,7 @@ from itertools import chain, izip
 
 from pandas import read_sql
 import numpy as np
-
+import json
 
 
 class DBIO(object):
@@ -36,10 +36,16 @@ class DBIO(object):
         self.__mg_conn__ = MongoClient()[MG_DB_NAME] if MG_DB_NAME else None
 
         try:
-            self.__pg_conn__ = pg2.connect(dbname=PG_DB_NAME,
-                                           user='l',
-                                           host='/tmp') \
-                               if PG_DB_NAME else None
+            if PG_DB_NAME:
+                with open('../../../auth/postgres/postgres.json', 'r') as f:
+                    PGCONN = json.load(f)
+                    PGCONN['dbname'] = PG_DB_NAME
+
+                self.__pg_conn__ = pg2.connect(**PGCONN)
+
+            else:
+                self.__pg_conn__ = None
+
         except:
             self.create_database(PG_DB_NAME=PG_DB_NAME)
 
@@ -97,7 +103,11 @@ class DBIO(object):
         if PG_DB_NAME:
 
             try:
-                conn = pg2.connect(dbname='postgres', user='l', host='/tmp')
+                with open('../../../auth/postgres/postgres.json', 'r') as f:
+                    PGCONN = json.load(f)
+                    PGCONN['dbname'] = 'postgres'
+
+                conn = pg2.connect(**PGCONN)
                 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
                 cur = conn.cursor()
@@ -138,10 +148,12 @@ class DBIO(object):
                 if 'conn' in locals(): conn.close()
 
 
+            with open('../../../auth/postgres/postgres.json', 'r') as f:
+                PGCONN = json.load(f)
+                PGCONN['dbname'] = PG_DB_NAME
+
             self.__pg_db_name__ = PG_DB_NAME
-            self.__pg_conn__ = pg2.connect(dbname=PG_DB_NAME,
-                                           user='l',
-                                           host='/tmp')
+            self.__pg_conn__ = pg2.connect(**PGCONN)
 
         return r
 

@@ -16,7 +16,7 @@ In late 2008/early 2009, a person or a group of people by the pseudonym “Satos
 
 * Bitcoin consultant – [Francisco Cervera](https://www.linkedin.com/in/cerverafco)
 * Data consultant – [Jay Jung](https://www.linkedin.com/in/jayjung0)
-* Art consultant – [Engel Ching](https://www.linkedin.com/in/engelching), [Mia Hunsicker](https://www.linkedin.com/in/miahunsicker)
+* Art consultant – [Engel Ching](http://www.architek.live), [Mia Hunsicker](https://www.linkedin.com/in/miahunsicker)
 
 <br>
 ## References
